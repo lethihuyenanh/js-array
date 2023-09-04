@@ -1,0 +1,394 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>test Array menthod</title>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="author" href="humans.txt">
+
+  <style>
+    .w40p {
+      width: 40px;
+    }
+    .w-other {
+      width: calc(100% - 40px);
+    }
+    #arr-wrap {
+      height: 150px;
+      overflow: auto;
+      padding: 10px;
+    }
+  </style>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="./assets/js/js_data.js"></script>
+</head>
+<body>
+  <div class="p-5">
+    <div class="container">
+      <h1 class="text-center p-2">ARRAY MENTHODS</h1>
+      <h2 class="m-2">Demo Data Array</h2>
+      <div id="arr-wrap" class="bg-dark text-light w-100 pl-3">
+        <script>
+          // var parsed = '[<br>';
+          // demoArray.map(element => {
+          //   parsed += '{';
+          //   for (var property in element) {
+          //     if (property == 'amount') {
+          //       parsed += '<span class="text-success">' + property + '</span>:<span class="text-warning"> "' + element[property] + '"</span>';
+          //     } else {
+          //       parsed += '<span class="text-success">' + property + '</span>: <span class="text-warning">"' + element[property] + '"</span>, ';
+          //     }
+          //   }
+          //   parsed += '},<br>'
+          // });
+          // parsed += '];';
+          // document.write(parsed);
+
+          let parsed = JSON.stringify(demoArray);
+          let arrParsed = parsed.replace(/},/g, '},####').split('####');
+          let strParsed = '';
+          for (let i = 0; i < arrParsed.length; i++) {
+            strParsed += arrParsed[i] + '<br>';
+          }
+          document.write(strParsed);
+        </script>
+      </div>
+      <h2 class="m-2">Array Menthod Actions</h2>
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Keyword: </span>
+          </div>
+          <input class="form-control mr-sm-2" id="textKeyword" type="text" placeholder="Keyword" aria-label="Keyword" value="Iphone 11">
+        </form>
+      </nav>
+      <ul class="filter list-unstyled row">
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-danger js-map">map()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#mapModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-flat">flat()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#flatModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-flatMap">flatMap()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#flatMapModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-danger js-filter">filter()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#filterModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-danger js-reduce">reduce()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#reduceModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-some">some()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#someModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-includes">includes()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#includesModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-find">find()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#findModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-sort">sort() <br><small>a - z</small></button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#sortModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-sort-za">sort() <br><small>z - a</small></button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#sortModal">+</button></div>
+          </div>
+        </li>
+        <li class="filter__item col-lg-3 col-md-4 col-sm-6 col-6 mb-2">
+          <div class="d-flex">
+            <div class="w-other"><button class="btn btn-block btn-primary js-reverse">reverse()</button></div>
+            <div class="w40p"><button class="btn btn-info" data-toggle="modal" data-target="#reverseModal">+</button></div>
+          </div>
+        </li>
+      </ul>
+      <h2 class="m-2">Array Menthod Results</h2>
+      <div id="storeWrapper"></div>
+    </div>
+  </div>
+  <!-- modal -->
+  <div class="modal fade" id="someModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.some()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>The <strong class="text-primary">some()</strong> method tests whether at least one element in the array passes the test implemented by the provided function. It returns true if, in the array, it finds an element for which the provided function returns true; otherwise it returns false. It doesn't modify the array.</p>
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.someModal -->
+  <!-- modal -->
+  <div class="modal fade" id="reduceModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.reduce()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>The <strong class="text-primary">reduce()</strong> method executes a reducer function (that you provide) on each element of the array, resulting in single output value.</p>
+          The reducer function takes four arguments:
+          <ol>
+            <li>Accumulator</li>
+            <li>Current Value</li>
+            <li>Current Index</li>
+            <li>Source Array</li>
+          </ol>
+          <p>Your reducer function's returned value is assigned to the accumulator, whose value is remembered across each iteration throughout the array, and ultimately becomes the final, single resulting value.</p>
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.reduceModal -->
+  <!-- modal -->
+  <div class="modal fade" id="everyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.every()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="#" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.everyModal -->
+  <!-- modal -->
+  <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.map()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>The <strong class="text-primary">map()</strong> method creates a new array populated with the results of calling a provided function on every element in the calling array.</p>
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.mapModal -->
+  <!-- modal -->
+  <div class="modal fade" id="flatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.flat()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>The <strong class="text-primary">flat()</strong> method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.</p>
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.flatModal -->
+  <!-- modal -->
+  <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.filter()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          The <strong class="text-primary">filter()</strong> method creates a new array with all elements that pass the test implemented by the provided function.
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.filterModal -->
+  <!-- modal -->
+  <div class="modal fade" id="forEachModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.forEach()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="#" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.forEachModal -->
+  <!-- modal -->
+  <div class="modal fade" id="findIndexModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.findIndex()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="#" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.findIndexModal -->
+  <!-- modal -->
+  <div class="modal fade" id="findModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.find()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          The find() method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.findModal -->
+  <!-- modal -->
+  <div class="modal fade" id="sortModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.sort()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>The <strong class="text-primary">sort()</strong> method sorts the elements of an array in place and returns the sorted array. The default sort order is ascending, built upon converting the elements into strings, then comparing their sequences of UTF-16 code units values.</p>
+
+          <p>The time and space complexity of the sort cannot be guaranteed as it depends on the implementation.</p>
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.sortModal -->
+  <!-- modal -->
+  <div class="modal fade" id="concatModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.concat()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="#" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.concatModal -->
+  <!-- modal -->
+  <div class="modal fade" id="fillModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.fill()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="#" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.fillModal -->
+  <!-- modal -->
+  <div class="modal fade" id="includesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.includes()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          The includes() method determines whether an array includes a certain value among its entries, returning true or false as appropriate.
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.includesModal -->
+  <!-- modal -->
+  <div class="modal fade" id="reverseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.reverse()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p>The <strong class="text-primary">reverse()</strong> method reverses an array in place. The first array element becomes the last, and the last array element becomes the first.</p>
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.reverseModal -->
+  <!-- modal -->
+  <div class="modal fade" id="flatMapModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalCenterTitle"><strong class="text-primary">Array.prototype.flatMap()</strong></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          The <strong class="text-primary">flatMap()</strong> method returns a new array formed by applying a given callback function to each element of the array, and then flattening the result by one level. It is identical to a map() followed by a flat() of depth 1, but slightly more efficient than calling those two methods separately.
+        </div>
+        <div class="text-center blockquote mark p-2 m-2 border border-info text-info"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap" target="_blank">(source)</a></div>
+        <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button></div>
+      </div>
+    </div>
+  </div><!-- /.flatMapModal -->
+  <script src="./assets/js/js_array.js"></script>
+</body>
+</html>
